@@ -35,9 +35,11 @@ const corsHeaders = {
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? "";
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
-const SUPABASE_DB_SCHEMA = Deno.env.get("SUPABASE_DB_SCHEMA") ?? "EzyAIAgent";
-const SUPABASE_STORAGE_BUCKET = Deno.env.get("SUPABASE_STORAGE_BUCKET") ?? "Dev_Test";
-const SUPABASE_STORAGE_FOLDER = Deno.env.get("SUPABASE_STORAGE_FOLDER") ?? "EzyAIAgent";
+// Supabase dashboard blocks custom secrets starting with "SUPABASE_",
+// so we support neutral names first and keep legacy names as fallback.
+const SUPABASE_DB_SCHEMA = Deno.env.get("DB_SCHEMA") ?? Deno.env.get("SUPABASE_DB_SCHEMA") ?? "EzyAIAgent";
+const SUPABASE_STORAGE_BUCKET = Deno.env.get("STORAGE_BUCKET") ?? Deno.env.get("SUPABASE_STORAGE_BUCKET") ?? "Dev_Test";
+const SUPABASE_STORAGE_FOLDER = Deno.env.get("STORAGE_FOLDER") ?? Deno.env.get("SUPABASE_STORAGE_FOLDER") ?? "EzyAIAgent";
 const PUBLIC_BASE_URL = Deno.env.get("PUBLIC_BASE_URL") ?? "https://localhost";
 const AIMLAPI_BASE_URL = Deno.env.get("AIMLAPI_BASE_URL") ?? "https://api.aimlapi.com/v1";
 const AGENT_DEFAULT_MODEL = Deno.env.get("AGENT_DEFAULT_MODEL") ?? "claude-sonnet-4-6";
