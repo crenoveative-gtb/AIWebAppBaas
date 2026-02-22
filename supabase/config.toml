@@ -1,0 +1,4 @@
+project_id = "ezyaiagent-bass"
+
+[functions.ezyai-api]
+verify_jwt = false
